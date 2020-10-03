@@ -20,9 +20,9 @@
           <i class="layui-icon layui-icon-username"></i>
           <input
             type="text"
-            name="usename"
+            name="username"
             required
-            lay-verify="required"
+            lay-verify="required|username"
             placeholder="请输入标题"
             autocomplete="off"
             class="layui-input"
@@ -34,7 +34,7 @@
             type="password"
             name="password"
             required
-            lay-verify="required"
+            lay-verify="required|pass"
             placeholder="请输入密码"
             autocomplete="off"
             class="layui-input"
@@ -42,7 +42,7 @@
         </div>
         <div class="layui-form-item">
           <button
-            class="layui-btn layui-btn-fluid"
+            class="layui-btn layui-btn-fluid layui-btn-normal"
             lay-submit
             lay-filter="formDemo"
           >
@@ -65,9 +65,9 @@
           <i class="layui-icon layui-icon-username"></i>
           <input
             type="text"
-            name="usename"
+            name="username"
             required
-            lay-verify="required"
+            lay-verify="required|username"
             placeholder="请输入标题"
             autocomplete="off"
             class="layui-input"
@@ -79,7 +79,7 @@
             type="password"
             name="password"
             required
-            lay-verify="required"
+            lay-verify="required|pass"
             placeholder="请输入密码"
             autocomplete="off"
             class="layui-input pass"
@@ -90,7 +90,7 @@
           <input
             type="password"
             required
-            lay-verify="required"
+            lay-verify="required|pass|repass"
             placeholder="再次确认密码"
             autocomplete="off"
             class="layui-input repass"
@@ -98,7 +98,7 @@
         </div>
         <div class="layui-form-item">
           <button
-            class="layui-btn layui-btn-fluid"
+            class="layui-btn layui-btn-fluid layui-btn-normal"
             lay-submit
             lay-filter="formDemo"
           >
