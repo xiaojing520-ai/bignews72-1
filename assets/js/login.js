@@ -68,6 +68,8 @@ $(function () {
       success: function (res) {
         console.log(res)
         if (res.status === 0) {
+          console.log(res.token)
+          window.localStorage.setItem("token", res.token)
           location.href = "./index.html"
         }
       }
