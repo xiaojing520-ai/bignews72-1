@@ -33,4 +33,25 @@ $(function () {
       }
     }
   })
+
+  // - 1.给退出按钮注册事件
+  // - 2.删除本地存储中的token
+  // - 3.跳转到login.html页面
+
+  // 2. 实现退出功能
+  // 2.1 给退出按钮注册事件
+  $(".logout").on("click", function () {
+    layer.confirm("确认要退出吗?", { icon: 3, title: "提示" }, function (
+      index
+    ) {
+      //do something
+      // 2.2 删除本地存储中的token
+      window.localStorage.removeItem("token")
+      // 2.3 跳转到登陆页面
+      location.href = "./login.html"
+
+      // 隐藏当前弹出层
+      layer.close(index)
+    })
+  })
 })
