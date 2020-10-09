@@ -8,6 +8,9 @@
     />
     <title>index页面</title>
     <link rel="stylesheet" href="./assets/lib/layui/css/layui.css" />
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="./assets/fonts/iconfont.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
   </head>
   <body class="layui-layout-body">
     <div class="layui-layout layui-layout-admin">
@@ -18,41 +21,89 @@
         <ul class="layui-nav layui-layout-right">
           <li class="layui-nav-item">
             <a href="javascript:;">
+              <span class="text-avatar">A</span>
               <img src="http://t.cn/RCzsdCq" class="layui-nav-img" />
               个人中心
             </a>
             <dl class="layui-nav-child">
-              <dd><a href="">基本资料</a></dd>
-              <dd><a href="">安全设置</a></dd>
+              <dd><a href="javascript:;">基本资料</a></dd>
+              <dd><a href="javascript:;">更换头像</a></dd>
+              <dd><a href="javascript:;">重置密码</a></dd>
             </dl>
           </li>
-          <li class="layui-nav-item"><a href="">退出</a></li>
+          <li class="layui-nav-item">
+            <a href="javascript:;"
+              ><i class="layui-icon layui-icon-logout"></i> 退出</a
+            >
+          </li>
         </ul>
       </div>
 
       <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
+          <!-- 欢迎语 -->
+          <div class="userInfo">
+            <a href="javascript:;">
+              <span class="text-avatar">A</span>
+              <img src="http://t.cn/RCzsdCq" class="layui-nav-img" />
+              <span class="welcome">欢迎&nbsp;&nbsp;AAA</span>
+            </a>
+          </div>
           <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-          <ul class="layui-nav layui-nav-tree" lay-filter="test">
-            <li class="layui-nav-item layui-nav-itemed">
-              <a class="" href="javascript:;">所有商品</a>
+          <ul
+            class="layui-nav layui-nav-tree"
+            lay-filter="test"
+            lay-shrink="all"
+          >
+            <li class="layui-nav-item layui-this">
+              <a href="javascript:;"
+                ><i class="layui-icon layui-icon-home"></i> 首页</a
+              >
+            </li>
+            <li class="layui-nav-item">
+              <a class="" href="javascript:;"
+                ><span class="iconfont icon-16"></span>文章管理</a
+              >
               <dl class="layui-nav-child">
-                <dd><a href="javascript:;">列表一</a></dd>
-                <dd><a href="javascript:;">列表二</a></dd>
-                <dd><a href="javascript:;">列表三</a></dd>
-                <dd><a href="">超链接</a></dd>
+                <dd>
+                  <a href="javascript:;"
+                    ><i class="layui-icon layui-icon-app"></i>文章类别</a
+                  >
+                </dd>
+                <dd>
+                  <a href="javascript:;"
+                    ><i class="layui-icon layui-icon-app"></i>文章列表</a
+                  >
+                </dd>
+                <dd>
+                  <a href="javascript:;"
+                    ><i class="layui-icon layui-icon-app"></i>发表文章</a
+                  >
+                </dd>
               </dl>
             </li>
             <li class="layui-nav-item">
-              <a href="javascript:;">解决方案</a>
+              <a href="javascript:;"
+                ><i class="layui-icon layui-icon-username"></i>个人中心</a
+              >
               <dl class="layui-nav-child">
-                <dd><a href="javascript:;">列表一</a></dd>
-                <dd><a href="javascript:;">列表二</a></dd>
-                <dd><a href="">超链接</a></dd>
+                <dd>
+                  <a href="javascript:;"
+                    ><i class="layui-icon layui-icon-app"></i>基本资料</a
+                  >
+                </dd>
+                <dd>
+                  <a href="javascript:;"
+                    ><i class="layui-icon layui-icon-app"></i>更换头像</a
+                  >
+                </dd>
+                <dd>
+                  <a href="javascript:;"
+                    ><i class="layui-icon layui-icon-app"></i>重置密码</a
+                  >
+                </dd>
               </dl>
             </li>
-            <li class="layui-nav-item"><a href="">云市场</a></li>
-            <li class="layui-nav-item"><a href="">发布商品</a></li>
           </ul>
         </div>
       </div>
@@ -62,9 +113,9 @@
         <div style="padding: 15px">内容主体区域</div>
       </div>
 
-      <div class="layui-footer">
+      <div class="layui-footer heimaFooter">
         <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
+        © www.itheima.com - 黑马程序员
       </div>
     </div>
     <script src="./assets/lib/layui/layui.all.js"></script>
