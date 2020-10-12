@@ -14,6 +14,8 @@
       <div class="layui-card-header">修改用户信息</div>
       <div class="layui-card-body">
         <form class="layui-form myForm" lay-filter="myForm">
+          <!-- 隐藏域就是一个input标签 type='hidden' 作用是用来存储数据 但是不在页面中显示 -->
+          <input type="hidden" name="id" />
           <div class="layui-form-item">
             <label class="layui-form-label">登陆名称:</label>
             <div class="layui-input-block">
@@ -61,7 +63,7 @@
               <button class="layui-btn" lay-submit lay-filter="formDemo">
                 提交修改
               </button>
-              <button type="reset" class="layui-btn layui-btn-primary">
+              <button class="layui-btn layui-btn-primary btn-reset">
                 重置
               </button>
             </div>
