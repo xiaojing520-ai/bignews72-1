@@ -7,3 +7,8 @@
   justify-content: space-between;
   align-items: center;
 }
+/* 表单的样式 */
+.myForm {
+  padding-top: 10px;
+  width: 450px;
+}

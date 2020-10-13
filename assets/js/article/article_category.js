@@ -11,4 +11,15 @@ $(function () {
       }
     }
   })
+
+  // 给添加分类按钮注册事件
+  $(".btn-add").on("click", function () {
+    // 调用layui.open方法
+    layer.open({
+      type: 1,
+      title: "添加文章分类",
+      content: $("#addCteTmp").html(),
+      area: "520px" // 弹出框的宽度
+    })
+  })
 })

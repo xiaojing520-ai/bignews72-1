@@ -11,7 +11,10 @@
     <div class="layui-card">
       <div class="layui-card-header">
         <span>文章类别管理</span>
-        <button type="button" class="layui-btn layui-btn-normal layui-btn-sm">
+        <button
+          type="button"
+          class="layui-btn layui-btn-normal layui-btn-sm btn-add"
+        >
           增加分类
         </button>
       </div>
@@ -64,6 +67,7 @@
         </table>
       </div>
     </div>
+    <!-- 分类列表的模板 -->
     <script type="text/template" id="categoryList">
       {{each data value index}}
       <tr>
@@ -87,6 +91,33 @@
         </td>
       </tr>
       {{/each}}
+    </script>
+
+    <!-- 添加按钮弹出层内容的模板 -->
+    <script type="text/template" id="addCteTmp">
+      <form class="layui-form  myForm">
+        <input type="hidden" name="id">
+        <div class="layui-form-item">
+          <label class="layui-form-label">分类名称:</label>
+          <div class="layui-input-block">
+            <input type="text" name="name" required lay-verify="required" placeholder="请输入分类名称" autocomplete="off"
+              class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">分类别名:</label>
+          <div class="layui-input-block">
+            <input type="text" name="alias" required lay-verify="required" placeholder="请输入分类别名" autocomplete="off"
+              class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">确认添加</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+      </form>
     </script>
     <script src="../assets/lib/jquery.js"></script>
     <script src="../assets/lib/layui/layui.all.js"></script>
