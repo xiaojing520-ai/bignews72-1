@@ -95,7 +95,7 @@
 
     <!-- 添加按钮弹出层内容的模板 -->
     <script type="text/template" id="addCteTmp">
-      <form class="layui-form  addForm">
+      <form class="layui-form myForm addForm">
         <div class="layui-form-item">
           <label class="layui-form-label">分类名称:</label>
           <div class="layui-input-block">
@@ -118,6 +118,53 @@
         </div>
       </form>
     </script>
+
+    <!-- 编辑按钮弹出层内容的模板 -->
+
+    <script type="text/html" id="editCteTmp">
+      <form class="layui-form  myForm  editForm" lay-filter="editForm">
+        <input type="hidden" name="Id" />
+        <div class="layui-form-item">
+          <label class="layui-form-label">分类名称:</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="name"
+              required
+              lay-verify="required|username"
+              placeholder="请输入分类名称"
+              autocomplete="off"
+              class="layui-input"
+            />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">分类别名:</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="alias"
+              required
+              lay-verify="required|username"
+              placeholder="请输入分类别名"
+              autocomplete="off"
+              class="layui-input"
+            />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn " lay-submit lay-filter="formDemo">
+              确认更新
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">
+              重置
+            </button>
+          </div>
+        </div>
+      </form>
+    </script>
+
     <script src="../assets/lib/jquery.js"></script>
     <script src="../assets/lib/layui/layui.all.js"></script>
     <script src="../assets/js/utils.js"></script>

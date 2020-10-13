@@ -85,4 +85,45 @@ $(function () {
       })
     })
   })
+
+  // 编辑按钮数据回显
+  $("tbody").on("click", ".btn-edit", function () {
+    // 获取id
+    var id = $(this).data("id")
+    // 6.3 弹出模态框
+    window.editIndex = layer.open({
+      type: 1,
+      title: "更新文章分类",
+      content: $("#editCteTmp").html(),
+      area: "520px" // 弹出框的宽度
+    })
+
+    $.ajax({
+      type: "GET",
+      url: "/my/article/cates/" + id,
+      success: function (res) {
+        if (res.status == 0) {
+          // 获取成功后渲染表单数据  form标签要加入lay-filter="editForm"
+          layui.form.val("editForm", res.data)
+        }
+      }
+    })
+  })
+
+  //   给弹出框的确定更新按钮注册事件，注意是通过委托的方式来注册的事件，发送ajax请示
+  $("body").on("submit", ".editForm", function (e) {
+    e.preventDefault()
+    $.ajax({
+      type: "POST",
+      url: "/my/article/updatecate",
+      data: $(this).serialize(),
+      success: function (res) {
+        console.log(res)
+        if (res.status == 0) {
+          layer.close(window.editIndex)
+          renderTable()
+        }
+      }
+    })
+  })
 })
