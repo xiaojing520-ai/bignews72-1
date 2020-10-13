@@ -1,0 +1,4 @@
+/* 给面板设置一个外边距 */
+.layui-card {
+  margin: 16px;
+}
