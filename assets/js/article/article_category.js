@@ -1,21 +1,24 @@
 $(function () {
   // 发送ajax请求拿数据，渲染页面
-  $.ajax({
-    type: "GET",
-    url: "/my/article/cates",
-    success: function (res) {
-      console.log(res)
-      if (res.status == 0) {
-        var htmlStr = template("categoryList", res)
-        $("tbody").html(htmlStr)
+  renderTable()
+  function renderTable() {
+    $.ajax({
+      type: "GET",
+      url: "/my/article/cates",
+      success: function (res) {
+        console.log(res)
+        if (res.status == 0) {
+          var htmlStr = template("categoryList", res)
+          $("tbody").html(htmlStr)
+        }
       }
-    }
-  })
+    })
+  }
 
   // 给添加分类按钮注册事件
   $(".btn-add").on("click", function () {
     // 调用layui.open方法
-    layer.open({
+    window.addIndex = layer.open({
       type: 1,
       title: "添加文章分类",
       content: $("#addCteTmp").html(),
@@ -38,5 +41,48 @@ $(function () {
         return "用户名不能全为数字"
       }
     }
+  })
+
+  // 给添加分类的确定按钮注册事件，发送ajax请示  由于是模板创建的，要给body绑定事件，由弹出层的addForm触发
+  $("body").on("submit", ".addForm", function (e) {
+    e.preventDefault()
+    $.ajax({
+      type: "POST",
+      url: "/my/article/addcates",
+      data: $(this).serialize(),
+      success: function (res) {
+        console.log(res)
+        if (res.status == 0) {
+          // 关闭弹出层
+          layer.close(window.addIndex)
+          // 重新渲染
+          renderTable()
+        }
+      }
+    })
+  })
+
+  // 删除功能 因为是动态生成的删除按钮，所以就用事件委托
+  $("tbody").on("click", ".btn-del", function () {
+    // 获取id
+    var id = $(this).data("id")
+    // console.log(id)
+    // 弹出提示框
+    layer.confirm("确定要删除该条数据吗", { icon: 3, title: "提示" }, function (
+      index
+    ) {
+      //do something
+      $.ajax({
+        type: "GET",
+        url: "/my/article/deletecate/" + id,
+        success: function (res) {
+          console.log(res)
+          if (res.status == 0) {
+            renderTable()
+            layer.close(index)
+          }
+        }
+      })
+    })
   })
 })
