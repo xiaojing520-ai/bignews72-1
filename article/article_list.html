@@ -12,7 +12,7 @@
       <div class="layui-card-header">文章列表</div>
       <div class="layui-card-body">
         <!-- 内容区一  搜索区 -->
-        <form class="layui-form" action="">
+        <form class="layui-form myForm" action="">
           <div class="layui-form-item">
             <div class="layui-inline">
               <div class="layui-input-inline">
@@ -28,7 +28,13 @@
                 </select>
               </div>
               <div class="layui-input-inline">
-                <button type="button" class="layui-btn">筛 选</button>
+                <button
+                  class="layui-btn btn-filter"
+                  lay-submit
+                  lay-filter="formDemo"
+                >
+                  筛 选
+                </button>
               </div>
             </div>
           </div>
@@ -80,7 +86,7 @@
     <script type="text/template" id="categoryList">
       <option value="">所有分类</option>
       {{each data value index}}
-      <option value="">{{value.name}}</option>
+      <option value="{{value.Id}}">{{value.name}}</option>
       {{/each}}
     </script>
 
