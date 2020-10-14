@@ -68,4 +68,44 @@ $(function () {
   }
 
   // 更新数据
+  // 5. 更新文章
+  // 5.1 给form表单注册click事件
+  $(".myForm").on("click", ".btn", function (e) {
+    // 阻止表单的默认事件
+    e.preventDefault()
+    var data = new FormData($(".myForm")[0])
+
+    //判断此文章是什么状态 '发布' '草稿'
+    if ($(e.target).hasClass("btn-release")) {
+      //发布
+      data.append("state", "发布")
+    } else {
+      //草稿
+      data.append("state", "草稿")
+    }
+    $image
+      .cropper("getCroppedCanvas", {
+        width: 400,
+        height: 280
+      })
+      .toBlob(function (blob) {
+        // 将裁剪之后的图片，转化为 blob 对象
+        data.append("cover_img", blob)
+        data.append("content", tinyMCE.activeEditor.getContent())
+        // 发起请求，把文章信息保存到服务器
+        $.ajax({
+          type: "POST",
+          url: "/my/article/edit",
+          data: data,
+          contentType: false,
+          processData: false,
+          success: function (res) {
+            if (res.status !== 0) {
+              return layer.msg("文章更新失败")
+            }
+            location.href = "./article_list.html"
+          }
+        })
+      })
+  })
 })
