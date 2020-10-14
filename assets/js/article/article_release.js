@@ -50,4 +50,51 @@ $(function () {
       .attr("src", imgUrl) // 重新设置图片路径
       .cropper(options) // 重新初始化裁剪区域
   })
+
+  // 文章发布
+  // 给form注册点击事件，有btn 按钮触发，两个按钮都有 btn的类名
+  $(".myForm").on("click", ".btn", function (e) {
+    e.preventDefault()
+    // 准备数据  FormData 的参数是DOM对象
+    var data = new FormData($(".myForm")[0])
+
+    // 判断此文章是什么状态 '发布' '草稿'
+    if ($(e.target).hasClass("btn-release")) {
+      // 发布
+      data.append("state", "发布")
+    } else {
+      // 草稿
+      data.append("state", "草稿")
+    }
+
+    $image
+      .cropper("getCroppedCanvas", {
+        width: 400,
+        height: 280
+      })
+      .toBlob(function (blob) {
+        // 将裁剪之后的图片，转化为 blob 对象
+        data.append("cover_img", blob)
+        // 由于原始的方式获取内容不到，因此使用如下方式来获取
+        data.append("content", tinyMCE.activeEditor.getContent())
+
+        // 数据都追加成功后 发送ajax请求
+
+        $.ajax({
+          type: "POST",
+          url: "/my/article/add",
+          // 用FormData收集数据，要设置这两项 contentType:false, processData:false,
+          contentType: false,
+          processData: false,
+          data: data,
+          success: function (res) {
+            if (res.status !== 0) {
+              return layer.msg("文章发表失败")
+            } else {
+              location.href = "./article_list.html"
+            }
+          }
+        })
+      })
+  })
 })
