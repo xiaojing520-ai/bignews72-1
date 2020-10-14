@@ -12,7 +12,7 @@
       <div class="layui-card-header">文章列表</div>
       <div class="layui-card-body">
         <!-- 内容区一  搜索区 -->
-        <form class="layui-form myForm" action="">
+        <form class="layui-form myForm" lay-filter="myForm" action="">
           <div class="layui-form-item">
             <div class="layui-inline">
               <div class="layui-input-inline">
@@ -101,9 +101,9 @@
         <td>{{value.pub_date}}</td>
         <td>{{value.state}}</td>
         <td>
-          <button type="button" data-id="{{value.Id}}" class="layui-btn layui-btn-xs">
-            编辑
-          </button>
+         <a href="./article_edit.html?id={{value.Id}}"  class="layui-btn layui-btn-xs btn-edit">
+          编辑
+        </a>
           <button
             type="button"
             data-id="{{value.Id}}"
