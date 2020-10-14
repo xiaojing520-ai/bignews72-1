@@ -82,6 +82,7 @@ $(function () {
 
   //使用委托的方式给删除按钮注册事件，发送请示，删除数据
   $("tbody").on("click", ".btn-del", function () {
+    var count = $("tbody .btn-del").length
     // 获取id
     var articleId = $(this).data("id")
     window.articleIndex = layer.confirm(
@@ -93,9 +94,12 @@ $(function () {
           url: "/my/article/delete/" + articleId,
           success: function (res) {
             if (res.status == 0) {
-              renderList()
               layer.close(window.articleIndex)
+              if (count == 1) {
+                options.pagenum = options.pagenum == 1 ? 1 : options.pagenum - 1
+              }
               layer.msg(res.message)
+              renderList()
             }
           }
         })
