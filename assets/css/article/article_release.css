@@ -1,0 +1,28 @@
+/* 给面板设置一个外边距 */
+.layui-card {
+  margin: 16px;
+}
+/* 设置裁剪区域的样式 */
+.box {
+  display: flex;
+}
+.cropper-box {
+  width: 400px;
+  height: 280px;
+  background-color: cyan;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+/* 设置预览区域的样式 */
+.img-preview {
+  width: 200px;
+  height: 140px;
+  background-color: gray;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.preview-box div:nth-child(2) {
+  padding-left: 60px;
+}
