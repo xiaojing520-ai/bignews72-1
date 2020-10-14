@@ -79,4 +79,27 @@ $(function () {
       }
     })
   }
+
+  //使用委托的方式给删除按钮注册事件，发送请示，删除数据
+  $("tbody").on("click", ".btn-del", function () {
+    // 获取id
+    var articleId = $(this).data("id")
+    window.articleIndex = layer.confirm(
+      "确认要删除该条数据吗?",
+      { icon: 3, title: "提示" },
+      function (index) {
+        $.ajax({
+          type: "GET",
+          url: "/my/article/delete/" + articleId,
+          success: function (res) {
+            if (res.status == 0) {
+              renderList()
+              layer.close(window.articleIndex)
+              layer.msg(res.message)
+            }
+          }
+        })
+      }
+    )
+  })
 })
